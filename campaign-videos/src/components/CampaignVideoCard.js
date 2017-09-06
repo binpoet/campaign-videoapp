@@ -8,7 +8,6 @@ class CampaignVideoCard extends Component {
     addVideoToCampaign(e){
         e.preventDefault()
         
-        var self = this
         const { name, description, videos, id } = this.props
 
         window.clipchamp({

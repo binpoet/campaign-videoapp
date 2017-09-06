@@ -123,22 +123,20 @@ class NewCampaign extends Component {
     render() {
         const { name, description, videos } = this.state
         const opts = {
-            width:'100%',
             playerVars: {
-                autoplay: 1,
                 mute: 1,
-                controls: 0,
                 showinfo: 0,
                 modestbranding: 1,
                 rel: 0,
                 playsinline: 0,
+                playlist: 'mjUsobGWhs8,HkZDSqyE1do,wW9w6eCQQkU,vpTHi7O66pI,NFBo5bj1tfU',
             }
         }
 
         return (
             <div className="container-fluid page-layout">
                 <div className="row justify-content-md-center">
-                    <div className="col-auto col-md-4">
+                    <div className="col-md-auto">
                         <div className="form-group">
                             <Link to="/">
                                 <div className="svg-icon svg-baseline">
@@ -155,11 +153,11 @@ class NewCampaign extends Component {
                         <h2>Create new campaign</h2> <br />
 
                         <form onSubmit={this.saveCampaign.bind(this)} onChange={this.onChange.bind(this)}>
-                            <div className="form-group">
-                                <label htmlFor="name"> Campaign name:</label> &nbsp;
+                            <div className="form-group d-flex">
+                                <label htmlFor="name" className="col-form-label"> Campaign name:</label> &nbsp;
                                 <input
-                                    className="border border-secondary border-left-0 border-right-0 border-top-0"
-                                    style={{backgroundColor:'#F9F9F9'}}
+                                    className="form-control"
+                                    style={{flex:1}}
                                     name="name"
                                     ref="name"
                                     type="text"
@@ -172,6 +170,7 @@ class NewCampaign extends Component {
                                 <label htmlFor="description"> Campaign description: </label>
                                 <br />
                                 <textarea
+                                    className="form-control"
                                     style={{width:'100%', resize:'none'}}
                                     rows="7"
                                     name="description"
@@ -188,9 +187,13 @@ class NewCampaign extends Component {
                                     return <video key={blob.name} src={window.URL.createObjectURL(blob)} controls></video>
                                 })
                             } */}
+                                    <YouTube
+                                        className="d-flex"
+                                        opts={opts}
+                                    />
+
                             {
                                 videos.map(video => {
-                                    console.log(video)
                                     return <YouTube
                                         key={video}
                                         videoId={video}

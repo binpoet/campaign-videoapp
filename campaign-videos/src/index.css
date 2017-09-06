@@ -1,3 +1,5 @@
+@import url('http://getbootstrap.com/dist/css/bootstrap.css');
+
 #video-campaigns-view {
   padding-top: 50px; }
   #video-campaigns-view .card-container {
